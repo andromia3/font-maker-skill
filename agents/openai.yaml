@@ -1,0 +1,5 @@
+interface:
+  display_name: "Font Maker"
+  short_description: "Turn visual ideas into installable fonts"
+  brand_color: "#123DD6"
+  default_prompt: "Use $font-maker to turn my visual idea into an installable font."

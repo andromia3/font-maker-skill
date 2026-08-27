@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  rebuild-example:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Potrace
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y potrace
+      - name: Install Python dependencies
+        run: python -m pip install -r scripts/requirements.txt
+      - name: Check scripts
+        run: python -m py_compile scripts/font_pipeline.py scripts/make_grid_template.py
+      - name: Check structural-template generator
+        run: python scripts/make_grid_template.py --characters ABCDEFGHIJKLMNOPQRSTUVWXYZ --columns 7 --rows 4 --size 1024x1024 --output /tmp/font-grid.png
+      - name: Rebuild and validate Blue Thread
+        run: python scripts/font_pipeline.py examples/blue-thread/font-manifest.json --output-dir /tmp/font-maker-output

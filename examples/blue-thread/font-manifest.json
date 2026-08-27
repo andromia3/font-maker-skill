@@ -1,0 +1,28 @@
+{
+  "family_name": "Blue Thread",
+  "style_name": "Regular",
+  "version": "0.1",
+  "ink_color": "#123DD6",
+  "background_color": "#F4EFE6",
+  "space_width": 330,
+  "left_bearing": 12,
+  "right_bearing": 6,
+  "atlases": [
+    {
+      "name": "uppercase",
+      "path": "atlas.png",
+      "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "columns": 7,
+      "rows": 4,
+      "target_height": 700,
+      "baseline_inset": 7,
+      "alpha_threshold": 36
+    }
+  ],
+  "specimen_lines": [
+    "BLUE THREAD",
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "QUICK BROWN FOX",
+    "PACK MY BOX WITH FIVE DOZEN JUGS"
+  ]
+}
