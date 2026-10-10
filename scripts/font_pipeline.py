@@ -142,7 +142,8 @@ def clean_glyph(
         fail("a mapped cell contains no visible glyph")
 
     largest_area = components[0][0]
-    minimum_area = max(24, round(largest_area * 0.018))
+    # Dust filtering must not discard the main component of a small glyph.
+    minimum_area = min(largest_area, max(24, round(largest_area * 0.018)))
     kept = [coords for area, coords in components if area >= minimum_area]
     mask = np.zeros_like(initial, dtype=bool)
     for coords in kept:
